@@ -3,6 +3,9 @@
 
 using namespace std;
 
+
+// g++ -o program_name main.cpp geometric_utils.cpp -I ../include -std=c++11
+
 int main() {
     int edge = 0;
     cout << "Please enter length of square" << endl;
