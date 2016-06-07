@@ -10,7 +10,7 @@
 //       compiler will return success or 0
 // note: string literal
 // note: std namespace
-// note: to compile, g++ -o hello main.cpp
+// note: to compile, g++ -o hello main.cpp -std=c++11
 int main() {
     std::cout << "Hello, World!" << std::endl;
     return 0;
