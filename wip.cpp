@@ -29,6 +29,18 @@ void display_array(int arr[], int size) {
     for (int i = 0; i < size; i++) {
         cout << arr[i] << " ";
     }
+    cout << endl;
+}
+
+void exchange_sort(int arr[], int size) {
+    for (int i = 0; i < size - 1; i++) {
+        for (int j = i + 1; j < size; j++) {
+            if (arr[i] > arr[j]) {
+                swap_using_pointers(&arr[i], &arr[j]);
+                display_array(arr, size);
+            }
+        }
+    }
 }
 
 int main() {
@@ -36,7 +48,7 @@ int main() {
     int arr[size] = {9, 3, 5, 4, 8};
     cout << "Before sorting: " << endl;
     display_array(arr, size);
-
+    exchange_sort(arr, size);
 //    int num1 = 5, num2 = 10;
 //    cout << "Before: " << num1 << " " << num2 << endl;
 //    swap_using_reference(num1, num2);
