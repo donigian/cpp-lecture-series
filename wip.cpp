@@ -1,66 +1,46 @@
 #include <iostream>
-#include <fstream>
-#include <vector>
 
 using namespace std;
 
-//Write a program to calculate a grade for CS 2
-//
-//10 Assignments
-//1 Midterm
-//1 Final
-//10 attendance records
-//
-//Grading
-//Attendance and participation at Lab and Lecture is expected and accounts
-// for ten percent (10%) of your final grade. This course will have a midterm and
-// final (40%) and homework (50%) covering key objectives.
-//A >= 90%
-//B >= 80%
-//C >= 70%
-//D >= 60%
-//F < 60%
+// swap using references
 
-vector<int> read_input_data() {
-    // open a file in read mode
-    vector<int> data;
+void swap_using_values(int num1_copy, int num2_copy){
+    int temp = 0;
+    temp = num1_copy;
+    num1_copy = num2_copy;
+    num2_copy = temp;
+}
 
-    cout << "Reading from the file" << endl;
-    ifstream file("/Users/avd/ClionProjects/cs_2_grade_calculator/grades.txt");
-    for (int n; file >> n;) {
-        data.push_back(n);
+void swap_using_reference(int& num1, int& num2){
+    int temp = 0;
+    temp = num1;
+    num1 = num2;
+    num2 = temp;
+}
+
+void swap_using_pointers(int* num1, int* num2){
+    int temp = 0;
+    temp = *num1;
+    *num1 = *num2;
+    *num2 = temp;
+}
+
+void display_array(int arr[], int size){
+    for ( int i = 0; i < size; i++){
+        cout << arr[i] << " ";
     }
-    return data;
-}
-
-void print_vector(vector<int> numbers) {
-    cout << endl;
-    for (int i = 0; i < numbers.size(); i++)
-        cout << numbers[i] << " ";
-}
-
-double calculate_hw_grade(vector<int> grades){
-    const double HW_RATIO = .5;
-    double sum_hw = 0;
-    for (int i = 0; i <= 9; i++) {
-        sum_hw += grades[i];
-    }
-    return sum_hw * HW_RATIO;
-}
-
-void calculate_grade(vector<int> grades) {
-    // grade_formula = (.50)*hw + (.2)*Midter + (.10)*Att + (.2)*final
-
-    double hw_score = calculate_hw_grade(grades);
-    cout << endl << "hw total is: " << hw_score << endl;
-    
-    
 }
 
 int main() {
-    vector<int> data;
-    data = read_input_data();
-    print_vector(data);
-    calculate_grade(data);
+    const int size = 5;
+    int arr[size] = {9, 3, 5, 4, 8};
+    
+    int num1=5, num2=10;
+    cout << "Before: " <<  num1 << " " << num2 << endl;
+//    swap_using_reference(num1, num2);
+    swap_using_pointers(&num1, &num2);
+
+    cout << "After: " <<  num1 << " " << num2 << endl;
+
     return 0;
 }
