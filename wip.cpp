@@ -2,58 +2,56 @@
 
 using namespace std;
 
-// swap using references
 
-void swap_using_values(int num1_copy, int num2_copy) {
-    int temp = 0;
-    temp = num1_copy;
-    num1_copy = num2_copy;
-    num2_copy = temp;
-}
+class Calculator {
+private:
+    int firstNum = 0;
+    int secondNum = 0;
+    char op;
 
-void swap_using_reference(int &num1, int &num2) {
-    int temp = 0;
-    temp = num1;
-    num1 = num2;
-    num2 = temp;
-}
+    int add() {
+        return firstNum + secondNum;
+    };
 
-void swap_using_pointers(int *num1, int *num2) {
-    int temp = 0;
-    temp = *num1;
-    *num1 = *num2;
-    *num2 = temp;
-}
+    int subtract() {
+        return firstNum - secondNum;
+    };
 
-void display_array(int arr[], int size) {
-    for (int i = 0; i < size; i++) {
-        cout << arr[i] << " ";
+    int divide() {
+        return firstNum / secondNum;
+    };
+
+    int multiply() {
+        return firstNum * secondNum;
+    };
+    string errorStr = "Please use program correctly";
+
+public:
+
+    Calculator(char opr, int num1, int num2) {
+        firstNum = num1;
+        secondNum = num2;
+        op = opr;
     }
-    cout << endl;
-}
 
-void exchange_sort(int arr[], int size) {
-    for (int i = 0; i < size - 1; i++) {
-        for (int j = i + 1; j < size; j++) {
-            if (arr[i] > arr[j]) {
-                swap_using_pointers(&arr[i], &arr[j]);
-                display_array(arr, size);
-            }
+    int calculate() {
+        if (op == '+')
+            return add();
+        else if (op == '-')
+            return subtract();
+        else if (op == '/')
+            return divide();
+        else if (op == '*')
+            return multiply();
+        else {
+            cerr << "Sorry, operation not supported!";
+            return 1;
         }
     }
-}
+};
 
 int main() {
-    const int size = 5;
-    int arr[size] = {9, 3, 5, 4, 8};
-    cout << "Before sorting: " << endl;
-    display_array(arr, size);
-    exchange_sort(arr, size);
-//    int num1 = 5, num2 = 10;
-//    cout << "Before: " << num1 << " " << num2 << endl;
-//    swap_using_reference(num1, num2);
-//    swap_using_pointers(&num1, &num2);
-//    cout << "After: " << num1 << " " << num2 << endl;
-
+    Calculator calc('+', 1, 2);
+    cout << calc.calculate();
     return 0;
 }
