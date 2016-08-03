@@ -2,56 +2,44 @@
 
 using namespace std;
 
-
-class Calculator {
+class Player {
 private:
-    int firstNum = 0;
-    int secondNum = 0;
-    char op;
-
-    int add() {
-        return firstNum + secondNum;
-    };
-
-    int subtract() {
-        return firstNum - secondNum;
-    };
-
-    int divide() {
-        return firstNum / secondNum;
-    };
-
-    int multiply() {
-        return firstNum * secondNum;
-    };
-    string errorStr = "Please use program correctly";
-
+    string name;
+    char side;
 public:
-
-    Calculator(char opr, int num1, int num2) {
-        firstNum = num1;
-        secondNum = num2;
-        op = opr;
+    Player(string player_name, char player_side){
+        name = player_name;
+        side = player_side;
     }
 
-    int calculate() {
-        if (op == '+')
-            return add();
-        else if (op == '-')
-            return subtract();
-        else if (op == '/')
-            return divide();
-        else if (op == '*')
-            return multiply();
-        else {
-            cerr << "Sorry, operation not supported!";
-            return 1;
-        }
+    void move(char from_col, char to_col, int from_row, int to_row){
+
     }
+
+};
+
+class Piece {
+private:
+    string type;
+    char col;
+    int row;
+    char color;
+public:
+    Piece(string t, char c, int r, char co){
+        type = t;
+        col = c;
+        row = r;
+        color = co;
+    }
+
 };
 
 int main() {
-    Calculator calc('+', 1, 2);
-    cout << calc.calculate();
+    cout << "Hello, let's play some Chess!" << endl;
+    Player player1("Bob", 'W');
+    Player player2("Simantha", 'B');
+    Piece Whiteknight1("Knight",'B', 1, 'W');
+    Piece Whiteknight2("Knight",'G', 1, 'W');
+//    player1.move();
     return 0;
 }
